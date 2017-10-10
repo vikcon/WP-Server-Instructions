@@ -51,6 +51,8 @@ The last command will give you the ip for the interface _eth0_
 Open it in browser, and voila!
 
 ## 7. Install PHP
+Installing on Ubuntu, SURY Repo doesn't work, instead check for PHP 7.1 launchpad repo
+
 Just like with Nginx, we need to create two files: the _apt_ source file, which points to the repository and key file, which is used to verify the integrity of the repository:
 
 ```
