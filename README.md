@@ -141,7 +141,7 @@ To test whether it's working correctly, run
 
 ## 10. Set up Redis
 `$ apt-get install -y redis-server`
-This will install the default Redis from the Debian repository, which usually doesn't have the latest version, so alternatively, you might want to visit [DigitalOcean's Redis tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-redis-on-ubuntu-16-04) and follow it.
+Ubuntu repo has latest REDIS version. This is easy, instead of manually installing the same.
 
 ## 11. Set up MySQL
 Install Percona MySQL as per instructions on [their page](https://www.percona.com/doc/percona-server/LATEST/installation/apt_repo.html)
