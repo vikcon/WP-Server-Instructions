@@ -55,18 +55,26 @@ Installing on Ubuntu, SURY Repo doesn't work, instead check for PHP 7.1 launchpa
 
 Just like with Nginx, we need to create two files: the _apt_ source file, which points to the repository and key file, which is used to verify the integrity of the repository:
 
+For Debian
 ```
 $ echo "deb https://packages.sury.org/php/ stretch main" > \
   /etc/apt/sources.list.d/php.list
 $ curl -o /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
 ```
 
+For Ubuntu
+```
+$ sudo add-apt-repository ppa:ondrej/php
+$ sudo apt-get update
+$ sudo apt-get install php7.2-cli
+```
+
 ```
 Now we can install PHP and all the dependencies WordPress needs to run:
 $ apt-get update && apt-get install -y \
     imagemagick \
-    php7.1-fpm php7.1-mysqli php7.1-curl php7.1-gd php7.1-geoip php7.1-xml \
-    php7.1-xmlrpc php7.1-imagick php7.1-mbstring php7.1-ssh2 php7.1-redis
+    php7.2-fpm php7.2-mysqli php7.2-curl php7.2-gd php7.2-geoip php7.2-xml \
+    php7.2-xmlrpc php7.2-imagick php7.2-mbstring php7.2-ssh2 php7.2-redis
 ```
 
 ## 8. Update Nginx to work with PHP
