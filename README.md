@@ -23,7 +23,7 @@ $ cat /proc/meminfo
 ## 4. Install basic components the system will need
 `$ apt-get install -y git zsh curl apt-transport-https`
 
-## 5. Install Oh-my-zsh (optional step)
+## 5. Install Oh-my-zsh (optional step) - DO NOT DO if you aren't sure about this. Avoid.
 Oh-my-zsh (and z-shell in general) come with a few niceties that Bash doesn't provide.
 `$ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"`
 
@@ -33,15 +33,15 @@ Reload the shell:
 
 If you want a nicer Vim experience, copy `.vimrc` in this repo to the root's home directory.
 
-## 6. Install Nginx
+## 6. Install Nginx instructions updated for Ubuntu 16.04 LTS Xenial
 First, let's check what version is the latest in the _apt_ repository:
 `$ apt-cache show nginx` (it is most likely behind)
 Visit [http://nginx.org/en/linux_packages.html](Nginx repositories page) to see how to add the repository to our apt.
 
 ```
 $ cat /etc/*-release 
-$ echo "deb https://nginx.org/packages/debian/ stretch nginx" > \
-  /etc/apt/sources.list.d/nginx.list
+$ echo "deb https://nginx.org/packages/mainline/ubuntu/ xenial nginx" > /etc/apt/sources.list.d/nginx.list
+$ echo "deb-src https://nginx.org/packages/mainline/ubuntu/ xenial nginx" > /etc/apt/sources.list.d/nginx.list
 $ curl -vs https://nginx.org/keys/nginx_signing.key | apt-key add -
 $ apt-get update && apt-get install -y nginx
 $ service nginx start
