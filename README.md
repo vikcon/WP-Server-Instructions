@@ -33,10 +33,10 @@ Reload the shell:
 
 If you want a nicer Vim experience, copy `.vimrc` in this repo to the root's home directory.
 
-## 6. Install Nginx instructions updated for Ubuntu 16.04 LTS Xenial
+## 6. Install Nginx instructions updated for Ubuntu 16.04 LTS Xenial 
+## UPDATE June 3, 2018 - Further updated for NGINX 1.14.x head to Nginx site [ http://nginx.org/en/linux_packages.html ] & check installation instructions
 First, let's check what version is the latest in the _apt_ repository:
 `$ apt-cache show nginx` (it is most likely behind)
-Visit [http://nginx.org/en/linux_packages.html](Nginx repositories page) to see how to add the repository to our apt.
 
 ```
 $ cat /etc/*-release 
