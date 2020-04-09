@@ -38,14 +38,21 @@ If you want a nicer Vim experience, copy `.vimrc` in this repo to the root's hom
 First, let's check what version is the latest in the _apt_ repository:
 `$ apt-cache show nginx` (it is most likely behind)
 
+APT repo still has 1.14.x legacy version, so will need latest one.
+
+Add latest Sources 
 ```
 $ sudo nano /etc/apt/sources.list.d/nginx.list
 $ echo "deb [arch=amd64] http://nginx.org/packages/mainline/ubuntu/ bionic nginx" > /etc/apt/sources.list.d/nginx.list
 $ echo "deb-src http://nginx.org/packages/mainline/ubuntu/ bionic nginx" > /etc/apt/sources.list.d/nginx.list
+```
 Get Key
+```
 $ wget http://nginx.org/keys/nginx_signing.key
 $ sudo apt-key add nginx_signing.key
-Install
+```
+Install Nginx
+```
 $ apt-get update && apt-get install -y nginx
 $ service nginx start
 $ ifconfig 
