@@ -84,7 +84,7 @@ First, edit the default configuration:
 
 Here, change `user www-data;` and `worker_processes auto;`
 
-`$ vim /etc/nginx/conf.d/default.conf`
+`$ nano /etc/nginx/conf.d/default.conf`
 
 Here, change `server_name _;`, then in `location /` block, add `index.php` so that the PHP files are read by Nginx. Then uncomment the `location ~ \.php$` block and change `fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;` 
 
@@ -106,14 +106,14 @@ Visit the IP in the browser, only to encounter an error.
 `$ cat /var/log/nginx/error.log` to see what the error is. Expectedly, it can't connect to PHP-FPM, so we need to configure it properly.
 
 ```
-$ cd /etc/php/7.1/fpm
+$ cd /etc/php/7.4/fpm
 $ grep -r "listen" . 
-$ vim ./pool.d/www.conf
+$ nano ./pool.d/www.conf
 ```
 
 Around line 36, there should be a `listen` directive, which we need to replace with `listen = [::]:9000`.
 
-Now reload PHP-FPM: `$ service php7.1-fpm reload`
+Now reload PHP-FPM: `$ service php7.4-fpm reload`
 
 Visit your browser again, and the `phpinfo();` should be revealed.
 Afterwards, **remove it!!!**
