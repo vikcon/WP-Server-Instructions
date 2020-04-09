@@ -40,7 +40,7 @@ If you want a nicer Vim experience, copy `.vimrc` in this repo to the root's hom
 First, let's check what version is the latest in the _apt_ repository:
 `$ apt-cache show nginx` (it is most likely behind)
 
-APT repo still has 1.14.x legacy version, so will need latest one.
+apt repo still has 1.14.x legacy version, so will need latest one.
 
 Add latest Sources 
 ```
@@ -72,8 +72,8 @@ $ sudo wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.
 $ echo "deb https://packages.sury.org/php/ stretch main" | sudo tee /etc/apt/sources.list.d/php.list
 ```
 
-```
 Now we can install PHP and all the dependencies WordPress needs to run:
+```
 $ apt-get update 
 $ sudo apt-get install php7.4-cli php7.4-curl php7.4-mysql php7.4-fpm php7.4-gd php7.4-xml php7.4-mbstring php7.4-zip php7.4-soap php7.4-dev 
 ```
