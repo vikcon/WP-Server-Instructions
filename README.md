@@ -1,3 +1,5 @@
+Latest Updated on April 9, 2020
+
 ## 1. SSH onto the droplet
 ssh root@[ip of the droplet]
 
@@ -34,7 +36,7 @@ Reload the shell:
 If you want a nicer Vim experience, copy `.vimrc` in this repo to the root's home directory.
 
 ## 6. Install Nginx instructions updated for Ubuntu 18.04 LTS Bionic 
-## UPDATE April 4, 2020 - Further updated for NGINX 1.17.x head to Nginx site [ http://nginx.org/en/linux_packages.html ] & check installation instructions
+## UPDATE April 9, 2020 - Further updated for NGINX 1.17.x head to Nginx site [ http://nginx.org/en/linux_packages.html ] & check installation instructions
 First, let's check what version is the latest in the _apt_ repository:
 `$ apt-cache show nginx` (it is most likely behind)
 
@@ -60,31 +62,20 @@ $ ifconfig
 The last command will give you the ip for the interface _eth0_
 Open it in browser, and voila!
 
-## 7. Install PHP
-Installing on Ubuntu, SURY Repo doesn't work, instead check for PHP 7.1 launchpad repo
+## 7. Install PHP 7.4 (Latest)
+Installing on Ubuntu 18.04 LTS, SURY repo has  latest PHP 7.4
 
-Just like with Nginx, we need to create two files: the _apt_ source file, which points to the repository and key file, which is used to verify the integrity of the repository:
-
-For Debian
+Adding Repo SURY
 ```
-$ echo "deb https://packages.sury.org/php/ stretch main" > \
-  /etc/apt/sources.list.d/php.list
-$ curl -o /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
-```
-
-For Ubuntu
-```
-$ sudo add-apt-repository ppa:ondrej/php
-$ sudo apt-get update
-$ sudo apt-get install php7.2-cli
+$ sudo apt-get install apt-transport-https -y
+$ sudo wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
+$ echo "deb https://packages.sury.org/php/ stretch main" | sudo tee /etc/apt/sources.list.d/php.list
 ```
 
 ```
 Now we can install PHP and all the dependencies WordPress needs to run:
-$ apt-get update && apt-get install -y \
-    imagemagick \
-    php7.2-fpm php7.2-mysqli php7.2-curl php7.2-gd php7.2-geoip php7.2-xml \
-    php7.2-xmlrpc php7.2-imagick php7.2-mbstring php7.2-ssh2 php7.2-redis
+$ apt-get update 
+$ sudo apt-get install php7.4-cli php7.4-curl php7.4-mysql php7.4-fpm php7.4-gd php7.4-xml php7.4-mbstring php7.4-zip php7.4-soap php7.4-dev 
 ```
 
 ## 8. Update Nginx to work with PHP
