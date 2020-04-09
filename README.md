@@ -33,16 +33,19 @@ Reload the shell:
 
 If you want a nicer Vim experience, copy `.vimrc` in this repo to the root's home directory.
 
-## 6. Install Nginx instructions updated for Ubuntu 16.04 LTS Xenial 
-## UPDATE June 3, 2018 - Further updated for NGINX 1.14.x head to Nginx site [ http://nginx.org/en/linux_packages.html ] & check installation instructions
+## 6. Install Nginx instructions updated for Ubuntu 18.04 LTS Bionic 
+## UPDATE April 4, 2020 - Further updated for NGINX 1.17.x head to Nginx site [ http://nginx.org/en/linux_packages.html ] & check installation instructions
 First, let's check what version is the latest in the _apt_ repository:
 `$ apt-cache show nginx` (it is most likely behind)
 
 ```
-$ cat /etc/*-release 
-$ echo "deb https://nginx.org/packages/mainline/ubuntu/ xenial nginx" > /etc/apt/sources.list.d/nginx.list
-$ echo "deb-src https://nginx.org/packages/mainline/ubuntu/ xenial nginx" > /etc/apt/sources.list.d/nginx.list
-$ curl -vs https://nginx.org/keys/nginx_signing.key | apt-key add -
+$ sudo nano /etc/apt/sources.list.d/nginx.list
+$ echo "deb [arch=amd64] http://nginx.org/packages/mainline/ubuntu/ bionic nginx" > /etc/apt/sources.list.d/nginx.list
+$ echo "deb-src http://nginx.org/packages/mainline/ubuntu/ bionic nginx" > /etc/apt/sources.list.d/nginx.list
+Get Key
+$ wget http://nginx.org/keys/nginx_signing.key
+$ sudo apt-key add nginx_signing.key
+Install
 $ apt-get update && apt-get install -y nginx
 $ service nginx start
 $ ifconfig 
