@@ -29,7 +29,7 @@ $ cat /proc/meminfo
 Oh-my-zsh (and z-shell in general) come with a few niceties that Bash doesn't provide.
 `$ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"`
 
-`$ vim ~/.zshrc` and change the `theme` line to what you want, _blinks_ is nice.
+`$ nano ~/.zshrc` and change the `theme` line to what you want, _blinks_ is nice.
 Reload the shell:
 `$ source ~/.zshrc`
 
@@ -80,7 +80,7 @@ $ sudo apt-get install php7.4-cli php7.4-curl php7.4-mysql php7.4-fpm php7.4-gd 
 
 ## 8. Update Nginx to work with PHP
 First, edit the default configuration:
-`$ vim /etc/nginx/nginx.conf`
+`$ nano /etc/nginx/nginx.conf`
 
 Here, change `user www-data;` and `worker_processes auto;`
 
@@ -124,9 +124,9 @@ Make sure exim4 is installed:
 
 Now, you need to set up an account with one of the mail providers, such as SendGrid, Mailgun or Mandrill. What you need is an API key.
 
-`$ vim /etc/exim4/passwd.client` and put it in in the format shown in the file
+`$ nano /etc/exim4/passwd.client` and put it in in the format shown in the file
 
-`$ vim /etc/exim4/update-exim4.conf.conf` and put the following snippet in (your configuration for _dc_smarthost_ might be different, depending on the provider):
+`$ nano /etc/exim4/update-exim4.conf.conf` and put the following snippet in (your configuration for _dc_smarthost_ might be different, depending on the provider):
 
 ```
 dc_eximconfig_configtype='smarthost'
@@ -211,12 +211,12 @@ and put the following code at the end of the file:
 Save and close the file, then:
 
 `$ exit` to return back to _root_
-`$ vim wp-config.php` to add `define('DISABLE_WP_CRON', true);` and configure database credentials and [salts](https://api.wordpress.org/secret-key/1.1/salt/)
+`$ nano wp-config.php` to add `define('DISABLE_WP_CRON', true);` and configure database credentials and [salts](https://api.wordpress.org/secret-key/1.1/salt/)
 
 Next, configure, Nginx to serve WordPress correctly, on our chosen domain
 ```
 $ cd /etc/nginx/conf.d
-$ vim example.com.conf 
+$ nano example.com.conf 
 ```
 (virtual hosts need `.conf` extension to be loaded)
 
@@ -240,7 +240,7 @@ $ cp wp_rsa.pub .ssh/authorized_keys
 $ chmod 0644 .ssh/authorized_keys
 ```
 
-`$ vim .ssh/authorized_keys` and prepend `from="127.0.0.1"`
+`$ nano .ssh/authorized_keys` and prepend `from="127.0.0.1"`
 
 Finally:
 ```
@@ -293,7 +293,7 @@ $ chmod -R 775 ./uploads
 
 Now it's time to install WP-Rocket, one of the best caching plugins on the market. Navigate to [WP-Rocket](https://wp-rocket.me/), make an account, buy the plugin and download it. When you try to install it by uploading the file to WordPress, you will most likely get an error `413 Request Entity Too Large`, so fix that next. Go back to the terminal and run the following commands:
 
-`$ vim /etc/php/7.1/fpm/php.ini` and locate the following three directives and set them to whatever you want your max upload size to be:
+`$ nano /etc/php/7.4/fpm/php.ini` and locate the following three directives and set them to whatever you want your max upload size to be:
 ```
 upload_max_filesize = 20M
 post_max_size = 20M
@@ -307,7 +307,7 @@ Run these:
 
 ```
 $ cd /var/www/example.com/wp-content
-$ vim advanced-cache.php // paste the WP-Rocket config in
+$ nano advanced-cache.php // paste the WP-Rocket config in
 $ mkdir -p wp-rocket-config cache/wp-rocket cache/min cache/busting
 $ chown -R webmaster:www-data wp-rocket-config cache/wp-rocket cache/min cache/busting
 $ chmod -R g+w wp-rocket-config cache/wp-rocket cache/min cache/busting
@@ -325,8 +325,8 @@ We will use [this repository](https://github.com/maximejobin/rocket-nginx) to he
 $ cd /etc/nginx
 $ git clone https://github.com/maximejobin/rocket-nginx.git
 $ cd rocket-nginx
-$ vim rocket-nginx.ini
-$ vim ../conf.d/example.com.conf // (replace with your domain)
+$ nano rocket-nginx.ini
+$ nano ../conf.d/example.com.conf // (replace with your domain)
 Add include rocket-nginx/default.conf; in the server block
 $ service nginx configtest
 $ service nginx reload
@@ -358,9 +358,9 @@ $ cd ./docs/examples
 $ cp * /etc/dehydrated
 $ cd /etc/dehydrated
 
-$ vim hook.sh // line 55: service nginx reload
-$ vim domains.txt // line 1: your-domain.com
-$ vim config
+$ nano hook.sh // line 55: service nginx reload
+$ nano domains.txt // line 1: your-domain.com
+$ nano config
 ```
 
 Visit the [staging documentation](https://letsencrypt.org/docs/staging-environment/) to first try out our certificate registration process there.
